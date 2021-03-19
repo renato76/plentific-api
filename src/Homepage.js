@@ -14,11 +14,29 @@ class Homepage extends React.Component {
   }
 
   handlePostcode = event => {
-    console.log(event.target)
+    console.log(event.target.value)
+    const formData = {
+      ...this.state.formData,
+      location: event.target.value
+    } 
+    console.log(formData)
+    this.setState({ formData })
   }
 
+
   handleCategory = event => {
-    console.log(event.target.value)
+    const category = event.target.value
+    console.log(category)
+    const formData = {
+      ...this.state.formData,
+      category_id: category
+    }
+    console.log(formData)
+    this.setState({ formData })
+  }
+
+  handleSubmit = () => {
+    // this should make the POST request using formData
   }
 
 
@@ -45,13 +63,19 @@ class Homepage extends React.Component {
           <div className="category-container">
             <h2 className="category-label">Category</h2>
             <div className="category-dropdown">
-              <select>
-                {categories.map((category, id) => <option key={id} name={category.name} value={category.name}>{category.name}</option>)}
+              <select onChange={this.handleCategory}>
+                {categories.map((category, id) => 
+                  <option 
+                    key={id} 
+                    name={category.name} 
+                    value={category.id}>{category.name}
+                  </option>
+                )}
               </select>
             </div>
           </div> 
-          <div className="location-container">
-            <h2 className="location-label">Postcode</h2>
+          <div className="postcode-container">
+            <h2 className="postcode-label">Postcode</h2>
             <div className="control">
               <input
                 className="form-input"
@@ -61,6 +85,9 @@ class Homepage extends React.Component {
                 onChange={this.handlePostcode}
               />
             </div>
+          </div>
+          <div className="submit-container">
+            <button type="submit" className="submit-btn">Submit</button>
           </div>
         </form>
             
