@@ -3,9 +3,11 @@ import axios from 'axios'
 
 const baseUrl = 'https://demo.plentific.com/uk/find-a-pro/api/v2/public/pro/search-pros/'
 
+export const getAllCategories = () => {
+  return axios.get('https://d3p0y7b1b87cj.cloudfront.net/production-plentific-static/api-cache/find-a-pro/api/v1/categories/all.json')
+}
 
-
-export const searchForPros = (formData) => {
+export const getAllPros = (formData) => {
   const withHeaders = { 
     headers: { 
       'x-pagination-limit': '10', 

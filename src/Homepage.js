@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import React from 'react'
-// import { searchForPros } from './lib/api'
+import { getAllCategories } from './lib/api'
 
 class Homepage extends React.Component {
 
@@ -12,15 +12,20 @@ class Homepage extends React.Component {
     }
   }
 
-  handleChange = event => {
+  handlePostcode = event => {
     console.log(event.target)
   }
 
-  handleMultiSelect = () => {
-    console.log('handlemulti')
-    // push the selected values into that array
-    // const selectedIds =  Array.from(event.target.selectedOptions).map((o) => Number(o.value))
-    // console.log(selectedIds)
+  handleCategory = event => {
+    console.log(event.target.value)
+  }
+
+
+  async componentDidMount() {
+    const response = await getAllCategories()
+    // console.log(response.data)
+    const notHiddenCategories = response.data.filter(category => category.hidden === false)
+    console.log(notHiddenCategories)
   }
 
   render() {
@@ -33,7 +38,7 @@ class Homepage extends React.Component {
         <form onSubmit={this.handleSubmit} className="form-container">
           <div className="category-container">
             <h2 className="category-label">Category</h2>
-            <select>           
+            <select onChange={this.handleCategory}>           
               <option name="1"value={1} className="option">Plumber</option>
               <option name="2"value={2} className="option">Cleaner</option>
               <option name="3"value={3} className="option">Electrician</option>
@@ -58,7 +63,7 @@ class Homepage extends React.Component {
                 placeholder="SW11"
                 name=""
                 // value={}
-                onChange={this.handleChange}
+                onChange={this.handlePostcode}
               />
             </div>
           </div>

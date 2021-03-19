@@ -13,11 +13,14 @@
   border: 1px solid #0e0e24;
   border-radius: 7px;
   padding: 20px;
-  margin: 0 5%;
+  margin: 0 20px;
 }
 .category-container {
   margin-right: 20px;
   justify-content: flex-start;
+}
+select {
+  width: 150px;
 }
 
 h2 {
