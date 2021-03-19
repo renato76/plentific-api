@@ -1,14 +1,18 @@
-* {
+*,
+::after,
+::before {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 .container {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  // height: 80vh;
 }
 .form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;  
   border: 1px solid #0e0e24;
   border-radius: 7px;
@@ -17,6 +21,7 @@
 }
 .category-container {
   margin-right: 20px;
+  margin-bottom: 20px;
   justify-content: flex-start;
 }
 
@@ -41,7 +46,17 @@ svg {
 
 .submit-btn {
   margin-top: 30px;
-  margin-left: 20px;
+  // margin-left: 20px;
   width: 100px;
 
+}
+
+@media (min-width: 768px) {
+  .form-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .postcode-container {
+    margin-right: 20px;
+  }
 }

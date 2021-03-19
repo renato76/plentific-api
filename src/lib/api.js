@@ -10,7 +10,8 @@ export const getAllCategories = () => {
 export const getAllPros = (formData) => {
   const withHeaders = { 
     headers: { 
-      'x-pagination-limit': '10', 
+      'x-pagination-count': null,
+      'x-pagination-limit': '200', 
       'x-pagination-offset': '0' },
   }
   return axios.post(`${baseUrl}`, formData, withHeaders)

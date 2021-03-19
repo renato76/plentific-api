@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import React from 'react'
-import { getAllCategories } from './lib/api'
+import { getAllCategories, getAllPros } from './lib/api'
 
 class Homepage extends React.Component {
 
@@ -8,7 +8,7 @@ class Homepage extends React.Component {
     pros: [],
     categories: [],
     formData: {
-      category_id: null, 
+      category_id: 1, 
       location: ''
     }
   }
@@ -35,8 +35,11 @@ class Homepage extends React.Component {
     this.setState({ formData })
   }
 
-  handleSubmit = () => {
+  handleSubmit = async event => {
     // this should make the POST request using formData
+    event.preventDefault()
+    const response = await getAllPros(this.state.formData)
+    console.log(response)
   }
 
 
