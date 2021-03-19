@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+}
+.form-container {
+  display: flex;
+  justify-content: center;  
+  border: 1px solid #0e0e24;
+  border-radius: 7px;
+  padding: 20px;
+  margin: 0 5%;
+}
+.category-container {
+  margin-right: 20px;
+  justify-content: flex-start;
+}
+
+h2 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.plentific {
+  background-image: url('./plentific-logo.svg');
+  background-repeat: no-repeat;
+}
+.homepage {
+  height: 80px;
+  border-bottom: 10px solid #18ccb1;
+  margin-bottom: 50px;
+  padding: 0;
+  text-align: center;
+}
+svg {
+  width: 220px;
+}
