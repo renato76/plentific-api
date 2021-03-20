@@ -11,7 +11,7 @@ export const getAllPros = (formData) => {
   const withHeaders = { 
     headers: { 
       'x-pagination-count': null,
-      'x-pagination-limit': '200', 
+      'x-pagination-limit': '50', 
       'x-pagination-offset': '0' },
   }
   return axios.post(`${baseUrl}`, formData, withHeaders)

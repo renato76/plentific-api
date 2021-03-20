@@ -1,6 +1,7 @@
 /* eslint-disable comma-dangle */
 import React from 'react'
 import { getAllCategories, getAllPros } from './lib/api'
+import ListPros from './ListPros'
 
 class Homepage extends React.Component {
 
@@ -19,7 +20,7 @@ class Homepage extends React.Component {
       ...this.state.formData,
       location: event.target.value
     } 
-    console.log(formData)
+    // console.log(formData)
     this.setState({ formData })
   }
 
@@ -31,7 +32,7 @@ class Homepage extends React.Component {
       ...this.state.formData,
       category_id: category
     }
-    console.log(formData)
+    // console.log(formData)
     this.setState({ formData })
   }
 
@@ -39,7 +40,12 @@ class Homepage extends React.Component {
     // this should make the POST request using formData
     event.preventDefault()
     const response = await getAllPros(this.state.formData)
-    console.log(response)
+    // console.log(response)
+    const searchResults = response.data.response.pros
+    console.log(searchResults)
+    this.setState({
+      pros: searchResults
+    })
   }
 
 
@@ -54,48 +60,52 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const { categories } = this.state
-    console.log(categories)
+    const { categories, pros } = this.state
+    // console.log(pros)
     return (
       <div className="container">
         <div className="homepage">
           <svg className="plentific"></svg>
         </div>
-        {/* create a form with a dropdown of categories and an input field */}
-        <form onSubmit={this.handleSubmit} className="form-container">
-          <div className="category-container">
-            <h2 className="category-label">Category</h2>
-            <div className="category-dropdown">
-              <select onChange={this.handleCategory}>
-                {categories.map((category, id) => 
-                  <option 
-                    key={id} 
-                    name={category.name} 
-                    value={category.id}>{category.name}
-                  </option>
-                )}
-              </select>
+        {/* create a form with a dropdown of categories and an input field for the postcode */}
+        <div className="results-container">
+          <form onSubmit={this.handleSubmit} className="form-container">
+            <div className="category-container">
+              <h2 className="category-label">Category</h2>
+              <div className="category-dropdown">
+                <select onChange={this.handleCategory}>
+                  {categories.map((category, id) => 
+                    <option 
+                      key={id} 
+                      name={category.name} 
+                      value={category.id}>{category.name}
+                    </option>
+                  )}
+                </select>
+              </div>
+            </div> 
+            <div className="postcode-container">
+              <h2 className="postcode-label">Postcode</h2>
+              <div className="control">
+                <input
+                  className="form-input"
+                  placeholder="SW11"
+                  name=""
+                  // value={}
+                  onChange={this.handlePostcode}
+                />
+              </div>
             </div>
-          </div> 
-          <div className="postcode-container">
-            <h2 className="postcode-label">Postcode</h2>
-            <div className="control">
-              <input
-                className="form-input"
-                placeholder="SW11"
-                name=""
-                // value={}
-                onChange={this.handlePostcode}
-              />
+            <div className="submit-container">
+              <button type="submit" className="submit-btn">Submit</button>
             </div>
+          </form>
+          <div className="results-page">
+            <ListPros
+              pros={pros}
+            />
           </div>
-          <div className="submit-container">
-            <button type="submit" className="submit-btn">Submit</button>
-          </div>
-        </form>
-            
-        {/* then setstate of formdata with these values */}
-        {/* then onsubmit can be when you make the actual request */}
+        </div>
       </div>
     )
   }

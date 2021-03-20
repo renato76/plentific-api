@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 *,
 ::after,
 ::before {
@@ -8,22 +9,24 @@
 .container {
   display: flex;
   flex-direction: column;
-  // height: 80vh;
+  height: 90vh;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
 }
 .form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;  
-  border: 1px solid #0e0e24;
-  border-radius: 7px;
-  padding: 20px;
-  margin: 0 20px;
+  padding: 10px 5px;
+  margin: 10px;
 }
 .category-container {
   margin-right: 20px;
   margin-bottom: 20px;
   justify-content: flex-start;
 }
+
 
 h2 {
   font-size: 17px;
@@ -48,8 +51,46 @@ svg {
   margin-top: 30px;
   // margin-left: 20px;
   width: 100px;
-
 }
+
+.results-container {
+  border: 1px solid black;
+  margin: 20px 10px;
+}
+
+.results-page {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 20px;
+}
+
+.table-rows {
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 100%;
+}
+
+.table-rows td, .table-rows th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table-rows tr:nth-child(even){background-color: #f2f2f2;}
+
+.table-rows tr:hover {background-color: #ddd;}
+
+.table-rows th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #18ccb1;
+  color: white;
+}
+
+
 
 @media (min-width: 768px) {
   .form-container {
@@ -58,5 +99,10 @@ svg {
   }
   .postcode-container {
     margin-right: 20px;
+  }
+  .container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
   }
 }
