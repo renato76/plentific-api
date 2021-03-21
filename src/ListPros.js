@@ -2,13 +2,11 @@ import React from 'react'
 import StarRatings from 'react-star-ratings'
 
 const ListPros = (props) => {
-  // console.log(props)
-  // const id = props.data.id
-  // const [currentPage, setCurrentPage] = useState(1)
-  // const [postsPerPage, setPostsPerPage] = useState(20)
+  const searchResults = props.pros
+  console.log(searchResults)
   
   const renderTableData = () => {
-    return props.pros.map((pro, index) => {
+    return searchResults.map((pro, index) => {
       return (
         <tr key={index}>
           <td>{pro.id}</td>
@@ -24,7 +22,6 @@ const ListPros = (props) => {
               name='rating'
             />
           </td>
-          {/* <td>{(pro.review_rating).toFixed(2)}</td> */}
         </tr>
       )
     })

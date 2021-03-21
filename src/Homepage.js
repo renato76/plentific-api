@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import React from 'react'
 import { getAllCategories, getAllPros } from './lib/api'
-import ListPros from './ListPros'
+import SearchResults from './SearchResults'
 
 class Homepage extends React.Component {
 
@@ -73,7 +73,10 @@ class Homepage extends React.Component {
 
   render() {
     const { categories, pros, errorMessage } = this.state
-    console.log(this.state)
+    // console.log(this.state)
+
+
+
     return (
       <div className="container">
         <div className="homepage">
@@ -116,9 +119,7 @@ class Homepage extends React.Component {
           </form>
           {/* check there is no error message and send pros data to ListPros component */}
           { !errorMessage && <div className="results-page">
-            <ListPros
-              pros={pros}
-            />
+            <SearchResults pros={pros} />
           </div>
           }
         </div>
