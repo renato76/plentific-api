@@ -25,6 +25,9 @@
   margin-bottom: 20px;
   justify-content: flex-start;
 }
+.select {
+  height: 25px;
+}
 
 
 h2 {
@@ -49,19 +52,25 @@ svg {
 .submit-btn {
   margin-top: 30px;
   // margin-left: 20px;
-  width: 100px;
+  width: 130px;
+  padding: 3px 10px;
+}
+
+.container {
+  width: 100%;
 }
 
 .results-container {
   border: 1px solid black;
-  margin: 20px 10px;
+  margin: 20px 0px;
+  width: 100%;
 }
 
 .results-page {
   display: flex;
   justify-content: center;
-  padding: 20px;
-  margin: 0 20px;
+  padding: 20px 5px;
+  // margin: 0 20px;
 }
 
 .table-rows {
@@ -70,6 +79,9 @@ svg {
   border-collapse: collapse;
   border: 3px solid #ddd;
   width: 100%;
+}
+.table-rows:hover {
+  cursor: pointer;
 }
 
 .table-rows td, .table-rows th {
@@ -88,7 +100,18 @@ svg {
   background-color: #18ccb1;
   color: white;
 }
-
+.form-input {
+  margin-bottom: 5px;
+  height: 25px;
+}
+.is-danger {
+  border: 1px solid red;
+}
+.postcode-container {
+  p {
+    color: red;
+  }
+}
 
 
 @media (min-width: 768px) {

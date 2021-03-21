@@ -2,7 +2,7 @@ import React from 'react'
 import StarRatings from 'react-star-ratings'
 
 const ListPros = (props) => {
-  console.log(props)
+  // console.log(props)
   // const id = props.data.id
   // const [currentPage, setCurrentPage] = useState(1)
   // const [postsPerPage, setPostsPerPage] = useState(20)
@@ -19,7 +19,7 @@ const ListPros = (props) => {
               rating={pro.review_rating}
               starRatedColor="black"
               numberOfStars={5}
-              starDimension="17px"
+              starDimension="15px"
               starSpacing="1px"
               name='rating'
             />
