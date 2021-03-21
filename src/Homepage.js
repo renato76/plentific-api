@@ -2,6 +2,7 @@
 import React from 'react'
 import { getAllCategories, getAllPros } from './lib/api'
 import SearchResults from './SearchResults'
+import Spinner from './Spinner'
 
 class Homepage extends React.Component {
 
@@ -12,7 +13,8 @@ class Homepage extends React.Component {
       category_id: 1 || null, 
       location: '' || null
     },
-    errorMessage: ''
+    errorMessage: '',
+    loading: false
   }
 
   handlePostcode = event => {
@@ -38,6 +40,9 @@ class Homepage extends React.Component {
   handleSubmit = async event => {
     // this should make the POST request using formData
     event.preventDefault()
+    this.setState({
+      loading: true
+    })
     try {
       const response = await getAllPros(this.state.formData)
 
@@ -45,12 +50,13 @@ class Homepage extends React.Component {
       const searchResults = response.data.response.pros
       // console.log(response)
 
-      // I set state of pros to search results but also had to re-set state of error message to null
+      // I set state of pros to search results but also had to set state of error message to null
       // so that when you correct an error and actually load data, the error message disappears
     
       this.setState({
         pros: searchResults,
-        errorMessage: ''
+        errorMessage: '',
+        loading: false
       })
     } catch (err) {
       const errorMessage = err.response.data.message
@@ -72,10 +78,8 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const { categories, pros, errorMessage } = this.state
+    const { categories, pros, errorMessage, loading } = this.state
     // console.log(this.state)
-
-
 
     return (
       <div className="container">
@@ -84,41 +88,43 @@ class Homepage extends React.Component {
         </div>
         {/* create a form with a dropdown of categories and an input field for the postcode */}
         <div className="results-container">
-          <form onSubmit={this.handleSubmit} className="form-container">
-            <div className="category-container">
-              <h2 className="category-label">Category</h2>
-              <div className="category-dropdown">
-                <select className="select" onChange={this.handleCategory}>
-                  {categories.map((category, id) => 
-                    <option 
-                      key={id} 
-                      name={category.name} 
-                      value={category.id}>{category.name}
-                    </option>
-                  )}
-                </select>
+          <div className="form-container">
+            <form onSubmit={this.handleSubmit} className="form">
+              <div className="category-container">
+                <h2 className="category-label">Category</h2>
+                <div className="category-dropdown">
+                  <select className="select" onChange={this.handleCategory}>
+                    {categories.map((category, id) => 
+                      <option 
+                        key={id} 
+                        name={category.name} 
+                        value={category.id}>{category.name}
+                      </option>
+                    )}
+                  </select>
+                </div>
+              </div> 
+              <div className="postcode-container">
+                <h2 className="postcode-label">Postcode</h2>
+                <div className="control">
+                  <input
+                    className={`form-input ${errorMessage ? 'is-danger' : ''}`}
+                    placeholder="Eg. SW11"
+                    name=""
+                    onChange={this.handlePostcode}
+                    error={errorMessage}
+                  />
+                </div>
+                { errorMessage && <p className="help">{(errorMessage).slice(9)}</p> }
+                {/* using the in-built error handling from the backend, only sliced it to shorten / tidy up the message*/}
               </div>
-            </div> 
-            <div className="postcode-container">
-              <h2 className="postcode-label">Postcode</h2>
-              <div className="control">
-                <input
-                  className={`form-input ${errorMessage ? 'is-danger' : ''}`}
-                  placeholder="Eg. SW11"
-                  name=""
-                  onChange={this.handlePostcode}
-                  error={errorMessage}
-                />
+              <div className="submit-container">
+                <button type="submit" className="submit-btn">Submit</button>
               </div>
-              { errorMessage && <p className="help">{(errorMessage).slice(9)}</p> }
-              {/* using the in-built error handling from the backend, only sliced it to shorten / tidy up the message*/}
-            </div>
-            <div className="submit-container">
-              <button type="submit" className="submit-btn">Submit</button>
-            </div>
-          </form>
+            </form>
+          </div>
           {/* check there is no error message and send pros data to ListPros component */}
-          { !errorMessage && <div className="results-page">
+          { loading ? <div className="spinner">Loading<Spinner /></div> : !errorMessage && <div className="results-page">
             <SearchResults pros={pros} />
           </div>
           }

@@ -26,6 +26,10 @@
   margin-bottom: 20px;
   justify-content: flex-start;
 }
+.category-label,
+.postcode-label {
+  text-align: left;
+}
 .select {
   height: 25px;
 }
@@ -40,14 +44,15 @@ h2 {
   background-repeat: no-repeat;
 }
 .homepage {
-  height: 80px;
-  border-bottom: 10px solid #18ccb1;
-  margin-bottom: 50px;
-  padding: 0;
   text-align: center;
+  height: 80px;
+  border-bottom: 10px solid #18ccab;
+  margin-bottom: 10px;
+  padding: 0;
 }
 svg {
   width: 220px;
+  text-align: center;
 }
 
 .submit-btn {
@@ -76,11 +81,11 @@ svg {
 }
 
 .table-rows {
-  text-align: center;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   border: 3px solid #ddd;
   width: 100%;
+  font-size: 14px;
 }
 .table-rows:hover {
   cursor: pointer;
@@ -115,13 +120,17 @@ svg {
   }
 }
 
+.spinner {
+  text-align: center;
+}
+
 
 
 @media (min-width: 768px) {
-  .form-container {
+  .form {
     display: flex;
     flex-direction: row;
-    
+    justify-content: center;
   }
   .postcode-container {
     margin-right: 20px;
