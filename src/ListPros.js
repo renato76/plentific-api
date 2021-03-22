@@ -3,8 +3,7 @@ import StarRatings from 'react-star-ratings'
 
 const ListPros = (props) => {
   const searchResults = props.pros
-  console.log(searchResults)
-  // const id = props.data.id
+  // console.log(searchResults)
   
   const renderTableData = () => {
     return searchResults.map((pro, index) => {

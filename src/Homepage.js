@@ -40,8 +40,11 @@ class Homepage extends React.Component {
   handleSubmit = async event => {
     // this should make the POST request using formData
     event.preventDefault()
+
+    // here I added state change so error message and red box disappear if you correct the mistake in postcode entry 
     this.setState({
-      isLoading: false
+      isLoading: false,
+      errorMessage: ''
     })
     try {
       const response = await getAllPros(this.state.formData)
@@ -124,13 +127,12 @@ class Homepage extends React.Component {
               </div>
             </form>
           </div>
-          
+          {/* Added a loading effect whilst waiting for data */}
           { !isLoading && 
           <div className="spinner"> 
             <h4>Loading...</h4>
             <Spinner /> 
           </div>}
-
           {/* check there is no error message and send pros data to ListPros component */}
           { !errorMessage && 
             <div className="results-page">

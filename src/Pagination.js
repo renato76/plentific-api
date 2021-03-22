@@ -28,17 +28,18 @@ const Next = ({ next, disabled }) => {
   )
 }
 
-// Pagination - creating page numbers
+// Pagination - creating page numbers using state passed from SearchResults
 const Pagination = ({ prosPerPage, totalPros, currentPage, setCurrentPage }) => {
   const pageNumbers = []
-
-  const previous = () => setCurrentPage(currentPage - 1)
-  const next = () => setCurrentPage(currentPage + 1)
 
   for (let i = 1; i <= Math.ceil(totalPros / prosPerPage); i++) {
     pageNumbers.push(i)
   }
 
+  const previous = () => setCurrentPage(currentPage - 1)
+  const next = () => setCurrentPage(currentPage + 1)
+
+  // only do the Pagination once we have data
   if (pageNumbers.length === 0) {
     return <></>
   }
