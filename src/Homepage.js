@@ -120,7 +120,7 @@ class Homepage extends React.Component {
                 <div className="control">
                   <input
                     className={`form-input ${errorMessage ? 'is-danger' : ''}`}
-                    placeholder="Eg. SW11"
+                    placeholder="Eg. SL2 5NY"
                     name=""
                     onChange={this.handlePostcode}
                     error={errorMessage}
