@@ -3,7 +3,7 @@ import React from 'react'
 import { getAllCategories, getAllPros } from './lib/api'
 import SearchResults from './SearchResults'
 import Spinner from './Spinner'
-// import { toOutcode } from 'postcode'
+import { toOutcode } from 'postcode'
 
 class Homepage extends React.Component {
 
@@ -12,7 +12,7 @@ class Homepage extends React.Component {
     categories: [],
     formData: {
       category_id: 1 || null, 
-      location: '' || null
+      location: '' 
     },
     errorMessage: '',
     isLoading: true
@@ -20,12 +20,15 @@ class Homepage extends React.Component {
 
   handlePostcode = event => {
     // console.log(event.target.value)
-    const postcode = event.target.value.toLowerCase()
-    // console.log(postcode)
+    const postcode = event.target.value
+    const string = String(postcode)
+    
+    const outcode = String(toOutcode(string)).toLowerCase()
+    console.log(outcode)
    
     const formData = {
       ...this.state.formData,
-      location: postcode
+      location: outcode
     } 
     // console.log(formData)
     this.setState({ formData })
