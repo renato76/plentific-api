@@ -14,7 +14,6 @@ const SearchResults = ({ pros }) => {
   // this will slice 20 results at a time (per page)
   const currentPros = pros.slice(indexofFirstPro, indexOfLastPro)
 
-  // const previous = () => setCurrentPage(currentPage - 1)
 
   return (
     <>

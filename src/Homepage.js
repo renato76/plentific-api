@@ -2,6 +2,7 @@
 import React from 'react'
 import { getAllCategories, getAllPros } from './lib/api'
 import SearchResults from './SearchResults'
+import Spinner from './Spinner'
 
 class Homepage extends React.Component {
 
@@ -12,7 +13,8 @@ class Homepage extends React.Component {
       category_id: 1 || null, 
       location: '' || null
     },
-    errorMessage: ''
+    errorMessage: '',
+    isLoading: true
   }
 
   handlePostcode = event => {
@@ -38,6 +40,9 @@ class Homepage extends React.Component {
   handleSubmit = async event => {
     // this should make the POST request using formData
     event.preventDefault()
+    this.setState({
+      isLoading: false
+    })
     try {
       const response = await getAllPros(this.state.formData)
 
@@ -50,13 +55,15 @@ class Homepage extends React.Component {
     
       this.setState({
         pros: searchResults,
-        errorMessage: ''
+        errorMessage: '',
+        isLoading: true
       })
     } catch (err) {
       const errorMessage = err.response.data.message
       // console.log(errorMessage)
       this.setState({
         errorMessage: errorMessage,
+        isLoading: true
       })
     }
   }
@@ -72,7 +79,7 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const { categories, pros, errorMessage } = this.state
+    const { categories, pros, errorMessage, isLoading } = this.state
     // console.log(this.state)
 
     return (
@@ -117,6 +124,13 @@ class Homepage extends React.Component {
               </div>
             </form>
           </div>
+          
+          { !isLoading && 
+          <div className="spinner"> 
+            <h4>Loading...</h4>
+            <Spinner /> 
+          </div>}
+
           {/* check there is no error message and send pros data to ListPros component */}
           { !errorMessage && 
             <div className="results-page">

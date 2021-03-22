@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Previous button component
 const Previous = ({ previous, disabled }) => {
   const onClick = (event) => disabled ? event.preventDefault() : previous()
   const className = `page-item ${disabled ? 'disabled' : ''}`
@@ -13,6 +14,7 @@ const Previous = ({ previous, disabled }) => {
   )
 }
 
+// Next button component
 const Next = ({ next, disabled }) => {
   const onClick = (event) => disabled ? event.preventDefault() : next()
   const className = `page-item ${disabled ? 'disabled' : ''}`
@@ -25,6 +27,8 @@ const Next = ({ next, disabled }) => {
     </li>
   )
 }
+
+// Pagination - creating page numbers
 const Pagination = ({ prosPerPage, totalPros, currentPage, setCurrentPage }) => {
   const pageNumbers = []
 

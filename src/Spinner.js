@@ -5,7 +5,7 @@ import Loader from 'react-loader-spinner'
 function Spinner() {
   return (
     <div className="loading">
-      <Loader type="TailSpin" color="#151515" height="20" width="20" />
+      <Loader type="Bars" color="#151515" height="20" width="20" />
     </div>
   )
 }
