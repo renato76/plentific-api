@@ -3,6 +3,7 @@ import React from 'react'
 import { getAllCategories, getAllPros } from './lib/api'
 import SearchResults from './SearchResults'
 import Spinner from './Spinner'
+// import { toOutcode } from 'postcode'
 
 class Homepage extends React.Component {
 
@@ -19,9 +20,12 @@ class Homepage extends React.Component {
 
   handlePostcode = event => {
     // console.log(event.target.value)
+    const postcode = event.target.value.toLowerCase()
+    // console.log(postcode)
+   
     const formData = {
       ...this.state.formData,
-      location: event.target.value
+      location: postcode
     } 
     // console.log(formData)
     this.setState({ formData })
@@ -133,7 +137,7 @@ class Homepage extends React.Component {
             <h4>Loading...</h4>
             <Spinner /> 
           </div>}
-          {/* check there is no error message and send pros data to ListPros component */}
+          {/* check there is no error message and send pros data to SearchResults component */}
           { !errorMessage && 
             <div className="results-page">
               <SearchResults pros={pros} />
