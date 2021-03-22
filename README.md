@@ -10,3 +10,6 @@ Clone or download the repo then do the following in Terminal:
 * Launch the app locally - `npm start`
 
 <br />
+
+## **Launch The App**
+https://plentific-api.herokuapp.com/
