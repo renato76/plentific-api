@@ -14,7 +14,7 @@ const SearchResults = ({ pros }) => {
   // this will slice 20 results at a time (per page)
   const currentPros = pros.slice(indexofFirstPro, indexOfLastPro)
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  // const previous = () => setCurrentPage(currentPage - 1)
 
   return (
     <>
@@ -22,8 +22,9 @@ const SearchResults = ({ pros }) => {
         <ListPros pros={currentPros} />
         <Pagination 
           prosPerPage={prosPerPage} 
-          totalPros={pros.length} 
-          paginate={paginate} />
+          totalPros={pros.length}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage} />
       </div>
     </>
   )

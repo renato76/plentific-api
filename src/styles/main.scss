@@ -138,10 +138,14 @@ svg {
     background-color: white;
     padding: 5px 10px;
   }
+  .page-item.disabled {
+    opacity: .4;
+  }
   .page-link {
     border: 1px solid #a5a5a56c;
   }
-  a:focus {
+  a:focus,
+  a.active {
     text-decoration: none;
     padding: 3px;
     color: white;
