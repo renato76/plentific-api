@@ -12,7 +12,7 @@ class Homepage extends React.Component {
     categories: [],
     formData: {
       category_id: 1 || null, 
-      location: '' 
+      location: ''
     },
     errorMessage: '',
     isLoading: true
