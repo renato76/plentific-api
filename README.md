@@ -18,7 +18,7 @@ https://plentific-api.herokuapp.com/
 
 First step I used Insomnia to create and test my API Get and Post requests.
 
-With this done, my plan was to create a dropdown where users can choose a category and then save that to staet, as well as a text area (controlled input), to capture the postcode.
+With this done, my plan was to create a dropdown where users can choose a category and then save that to state, as well as a text area (controlled input), to capture the postcode.
 
 Both these needed saving to state to then be part of the POST request.
 

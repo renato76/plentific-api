@@ -95,7 +95,9 @@ class Homepage extends React.Component {
     return (
       <div className="container">
         <div className="homepage">
-          <svg className="plentific"></svg>
+          <a className="logo" href="/">
+            <svg className="plentific"></svg>
+          </a>
         </div>
         {/* create a form with a dropdown of categories and an input field for the postcode */}
         <div className="results-container">
