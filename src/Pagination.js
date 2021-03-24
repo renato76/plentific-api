@@ -51,7 +51,7 @@ const Pagination = ({ prosPerPage, totalPros, currentPage, setCurrentPage }) => 
           <Previous previous={previous} disabled={currentPage === 1} />
           {pageNumbers.map(number => (
             <li key={number} className="page-item">
-              <a onClick={() => setCurrentPage(number)} href="!#" className={`page-link ${number === currentPage ? 'active' : ''}`}>
+              <a onClick={() => setCurrentPage(number)} currentPage={currentPage} href="!#" className={`page-link ${number === currentPage ? 'active' : ''}`}>
                 {number}
               </a>
             </li>

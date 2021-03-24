@@ -25,7 +25,7 @@ class Homepage extends React.Component {
     
     const outcode = String(toOutcode(string)).toLowerCase()
     console.log(outcode)
-   
+
     const formData = {
       ...this.state.formData,
       location: outcode
@@ -90,7 +90,7 @@ class Homepage extends React.Component {
 
   render() {
     const { categories, pros, errorMessage, isLoading } = this.state
-    // console.log(this.state)
+    // console.log(pros)
 
     return (
       <div className="container">
