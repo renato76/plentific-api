@@ -15,8 +15,10 @@ class Homepage extends React.Component {
       location: ''
     },
     errorMessage: '',
-    isLoading: true
+    isLoading: true,
+    currentPage: 1
   }
+
 
   handlePostcode = event => {
     // console.log(event.target.value)
