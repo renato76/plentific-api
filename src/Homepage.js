@@ -15,8 +15,7 @@ class Homepage extends React.Component {
       location: ''
     },
     errorMessage: '',
-    isLoading: true,
-    currentPage: 1
+    isLoading: true
   }
 
 
@@ -60,7 +59,7 @@ class Homepage extends React.Component {
 
       // this is the search data returned from API
       const searchResults = response.data.response.pros
-      // console.log(response)
+      console.log(searchResults)
 
       // I set state of pros to search results but also had to set state of error message to null
       // so that when you correct an error and actually load data, the error message disappears
@@ -130,7 +129,9 @@ class Homepage extends React.Component {
                     error={errorMessage}
                   />
                 </div>
-                { errorMessage && <p className="help">{(errorMessage).slice(9)}</p> }
+                <div>
+                  { errorMessage && <p className="help">{(errorMessage).slice(9)}</p> }
+                </div>
                 {/* using the in-built error handling from the backend, only sliced it to shorten / tidy up the message*/}
               </div>
               <div className="submit-container">
@@ -145,7 +146,7 @@ class Homepage extends React.Component {
             <Spinner /> 
           </div>}
           {/* check there is no error message and send pros data to SearchResults component */}
-          { !errorMessage && 
+          { !errorMessage  && 
             <div className="results-page">
               <SearchResults pros={pros} />
             </div>

@@ -4,7 +4,6 @@ import Pagination from './Pagination'
 
 const SearchResults = ({ pros }) => {
   // console.log(pros)
-
   const [currentPage, setCurrentPage] = useState(1)
   const [prosPerPage] = useState(20)
 
